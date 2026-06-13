@@ -1,0 +1,34 @@
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import ProgramsSection from "@/components/ProgramsSection";
+import ActivitiesSection from "@/components/ActivitiesSection";
+import SafetySection from "@/components/SafetySection";
+import TeamSection from "@/components/TeamSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
+import FloatingShapes from "@/components/FloatingShapes";
+import { useSiteContent } from "@/hooks/useSiteContent";
+import { useSiteMeta } from "@/hooks/useSiteMeta";
+
+const Index = () => {
+  const { data: content } = useSiteContent();
+  useSiteMeta();
+
+  return (
+    <div className="min-h-screen bg-background relative">
+      <FloatingShapes />
+      <Navbar />
+      <HeroSection content={content?.hero} />
+      <AboutSection content={content?.about} />
+      <ProgramsSection content={content?.programs} />
+      <ActivitiesSection content={content?.activities} />
+      <SafetySection content={content?.safety} />
+      <TeamSection />
+      <ContactSection content={content?.contact} />
+      <Footer />
+    </div>
+  );
+};
+
+export default Index;
